@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/algolab/Desktop/vb_shared/CGAL/grayapes/grayapes.cpp
+iostream
+-
+CGAL/Delaunay_triangulation_2.h
+-
+CGAL/Exact_predicates_inexact_constructions_kernel.h
+-
+

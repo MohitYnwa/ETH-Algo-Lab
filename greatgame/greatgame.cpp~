@@ -1,0 +1,178 @@
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int solve(vector< vector<int> > game, int s, int n)
+{
+  vector<int> solm(n+1, 0);
+  vector<int> solx(n+1, 0);
+
+  for (int i=n-1;i>=s;i--)
+    {
+      solm[i] = INT_MAX;
+      solx[i] = -1;
+      for (int j=0;j<game[i].size();j++)
+	{
+	  int k = game[i][j];
+	  solx[i] = max( solx[i], 1 + solm[k]);
+	  solm[i] = min( solm[i] ,1 + solx[k]);
+	}
+    }
+  return solx[s];
+}
+
+int main()
+{
+  int t;
+  cin>>t;
+  while(t--)
+    {
+      int n,m;
+
+      cin>>n>>m;
+      int r,b;
+      cin>>r>>b;
+
+      vector<vector <int> > game (n+1,vector<int>());
+
+      //    cout<<"1"<<endl;
+      for (int i=0;i<m;i++)
+	{
+	  int u,v;
+	  cin>>u>>v;
+	  game[u].push_back(v);
+	}
+
+      int sh = solve(game,r,n);
+      int mor = solve(game,b,n);
+
+      cout<<sh<<" "<<mor<<endl;
+      /*
+      //Solve;
+      vector<int> H(n+1), M(n+1),;
+      H[n]=0;M[n]=0;
+      for (int i=n-1;i>=r;i--)
+	{
+	  //	  cout<<H[i+1]<<endl;
+	  H[i] = INT_MAX;
+	  M[i]=-1;
+	  for (int k=0;k<game[i].size();k++)
+	    {
+	      H[i] = min (H[i], 1 + H[game[i][k]]);
+	      M[i] = max (M[i], 1 + H[game[i][k]]);
+	    }
+	}
+
+
+      //            cout<<"3"<<endl;
+      for (int i=n-1;i>=b;i--)
+	{
+	  M[i]=INT_MAX;
+	  for (int k=0;k<game[i].size();k++)
+	      M[i]=min(M[i], 1 + M[game[i][k]]);
+	}
+
+      //      cout<<"Hey"<<endl;
+
+      //Assume H starts first
+      int rc=r, bc= b;
+
+      bool H_even = true;
+      bool M_even = true;
+      while (true)
+	{
+	  
+	  //	   cout<<rc<<" "<<bc<<endl;
+	  //	  cout<<H_even<<" "<<M_even<<endl;
+	  if (H_even)
+	    {
+	      //  cout<<"Sher: Even"<<endl;
+	      int min_index=-1;
+	      int min_cost= INT_MAX;
+	      for (int j=0;j<game[rc].size();j++)
+		{
+		  int k=game[rc][j];
+		    if (1 + H[k] < min_cost)
+		      {
+			//			cout<<"G"<<game[3][50]<<" "<<j<<rc<<endl;
+			min_index=k;
+			min_cost = 1 + H[k];
+		      }
+		    
+		}
+	      rc = min_index;
+	      H_even = !H_even;
+	      if (rc==n || bc==n) break;
+	      //	      cout<<rc<<" "<<bc<<endl;
+	    }
+	  if (M_even)
+	     {
+	       //	       cout<<"Mor Even"<<endl;
+	       int min_index=-1;
+	       int min_cost =INT_MAX;
+	       for (int j=0;j<game[bc].size();j++)
+		 {
+		   int k = game[bc][j];
+		     if (1 + M[k] < min_cost)
+		       {
+			 min_index = k;
+			 min_cost = 1 + M[k];
+		       }
+		 }
+	       bc=min_index;
+	       M_even = !M_even;
+	       //	       cout<<rc<<" "<<bc<<endl;
+	       if (rc==n || bc==n) break;
+	     }
+	   if (!H_even)
+	     {
+	       //	       cout<<"Sher Odd"<<endl;
+	       int max_index=-1;
+	       int max_cost =-1;
+	       for (int j=0;j<game[bc].size();j++)
+		 {
+		   int k=game[bc][j];
+		     if (1 + M[k] > max_cost)
+		       {
+			 max_index = k;
+			 max_cost= 1+M[k];
+		       }
+		 }
+	       bc=max_index;
+	       H_even=!H_even;
+	       //	       cout<<rc<<" "<<bc<<endl;
+	       if (rc==n || bc==n) break;
+	     }      
+
+	   if (!M_even)
+	     {
+	       //	       cout<<"Mor odd"<<endl;
+	       int max_index=-1;
+	       int max_cost = -1;
+	       for (int j=0;j<game[rc].size();j++)
+		{
+		  int k = game[rc][j];
+		    if (1 + H[k] > max_cost)
+		      {
+			max_index=k;
+			max_cost = 1 + H[k];
+		      }
+		}
+	      rc=max_index;
+	      M_even = !M_even;
+	      //	      cout<<rc<<" "<<bc<<endl;
+	      if (rc==n||bc==n) break;
+	     }
+	 
+	}
+
+      //                  cout<<"F"<<rc<<" "<<bc<<endl;
+
+      if (rc == n )cout<<0<<endl;
+      else cout<<1<<endl;
+      //      cout<<r<<" "<<b<<" "<<n<<endl;
+      */
+    }
+  
+}

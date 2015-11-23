@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/algolab/Desktop/vb_shared/BGL/satellites/satellites.cpp
+iostream
+-
+boost/graph/adjacency_list.hpp
+-
+boost/graph/push_relabel_max_flow.hpp
+-
+boost/graph/cycle_canceling.hpp
+-
+boost/tuple/tuple.hpp
+-
+map
+-
+climits
+-
+queue
+-
+

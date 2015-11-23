@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/algolab/Desktop/vb_shared/CGAL/germs/germs.cpp
+iostream
+-
+map
+-
+set
+-
+CGAL/Delaunay_triangulation_2.h
+-
+CGAL/Exact_predicates_inexact_constructions_kernel.h
+-
+
